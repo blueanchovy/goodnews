@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,12 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.header {
+  @apply h-[10vh] flex items-center px-10 py-4 md:px-20 text-lg justify-between;
+}
+
+.header-logo {
+  @apply font-black md:text-2xl;
 }
