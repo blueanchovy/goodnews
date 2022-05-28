@@ -19,10 +19,56 @@ a {
   box-sizing: border-box;
 }
 
+main {
+  @apply relative h-[80vh];
+}
+
 .header {
   @apply h-[10vh] flex items-center px-10 py-4 md:px-20 text-lg justify-between;
 }
 
 .header-logo {
   @apply font-black md:text-2xl;
+}
+
+.textContainer {
+  @apply flex flex-col h-full px-2 py-28 md:px-52;
+}
+.textContainer-top {
+  @apply flex items-center justify-between text-lg md:text-2xl;
+}
+.textContainer-middle {
+  @apply invisible md:visible flex flex-1 place-items-center lg:justify-between md:justify-center md:align-bottom;
+}
+.textContainer-middle > span {
+  @apply text-3xl font-black tracking-wider md:text-8xl;
+}
+.textContainer-bottom {
+  @apply flex items-center justify-between text-lg md:text-2xl;
+}
+
+.phoneWrapper {
+  @apply absolute lg:top-16 md:top-[14rem] top-60 left-0 grid w-full text-center place-items-center;
+}
+.phone {
+  @apply h-44 w-[120px] lg:h-[400px] md:h-96 md:w-[350px]  object-contain;
+}
+
+.categoryWrapper-sports {
+  @apply absolute top-[4%] left-[8%];
+}
+.categoryWrapper-food {
+  @apply absolute top-[10%] right-[8%];
+}
+.categoryWrapper-pol {
+  @apply absolute top-[72%] right-[8%];
+}
+.categoryWrapper-tech {
+  @apply absolute top-[45%] right-[75%] lg:top-[70%] lg:right-[70%];
+}
+/* .categoryWrapper-5 {
+  @apply absolute top-[75%] left-1/4;
+} */
+.category {
+  @apply object-contain lg:w-56 lg:h-32 md:w-48 md:h-16 w-36 h-24;
 }
