@@ -19,10 +19,30 @@ a {
   box-sizing: border-box;
 }
 
+main {
+  @apply relative h-[80vh];
+}
+
 .header {
   @apply h-[10vh] flex items-center px-10 py-4 md:px-20 text-lg justify-between;
 }
 
 .header-logo {
   @apply font-black md:text-2xl;
+}
+
+.textContainer {
+  @apply flex flex-col h-full px-2 py-28 md:px-52;
+}
+.textContainer-top {
+  @apply flex items-center justify-between text-lg md:text-2xl;
+}
+.textContainer-middle {
+  @apply grid flex-1 place-items-center;
+}
+.textContainer-middle > span {
+  @apply text-5xl font-black tracking-wider md:text-9xl;
+}
+.textContainer-bottom {
+  @apply flex items-center justify-between text-lg md:text-2xl;
 }
