@@ -1,18 +1,40 @@
+import { motion } from "framer-motion";
+import { fadeIn, staggerContainer } from "../variants";
+
 const TextContainer = () => {
   return (
-    <div className="textContainer">
-      <div className="textContainer-top">
-        <span className="text-green-600">Sports</span>
-        <span className="text-yellow-600">Food</span>
-      </div>
-      <div className="textContainer-middle">
-        <span>GOOD NEWS</span>
-      </div>
-      <div className="textContainer-bottom">
-        <span className="text-cyan-600">Technology</span>
-        <span className="text-purple-600">Politics</span>
-      </div>
-    </div>
+    <motion.div
+      variants={staggerContainer}
+      initial="initial"
+      animate="animate"
+      className="textContainer"
+    >
+      <motion.div className="textContainer-top">
+        <motion.span variants={fadeIn()} className="text-green-600">
+          Sports
+        </motion.span>
+        <motion.span variants={fadeIn()} className="text-yellow-600">
+          Food
+        </motion.span>
+      </motion.div>
+      <motion.div
+        variants={fadeIn("up")}
+        initial="initial"
+        animate="animate"
+        className="textContainer-middle"
+      >
+        <motion.span>GOOD</motion.span>
+        <motion.span>NEWS</motion.span>
+      </motion.div>
+      <motion.div className="textContainer-bottom">
+        <motion.span variants={fadeIn()} className="text-cyan-600">
+          Technology
+        </motion.span>
+        <motion.span variants={fadeIn()} className="text-purple-600">
+          Politics
+        </motion.span>
+      </motion.div>
+    </motion.div>
   );
 };
 
