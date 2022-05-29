@@ -1,47 +1,55 @@
 import React from "react";
 import Image from "../node_modules/next/image";
 
-const NewsItem = (props) => {
-  let { title, description, imageUrl, newsUrl, author, source } = props;
+const NewsItem = ({
+  title,
+  description,
+  imageUrl,
+  newsUrl,
+  author,
+  source,
+}) => {
   return (
-    <div className="my-3">
-      <div className="card">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            position: "absolute",
-            right: "0",
-          }}
-        >
-          {/* <span className="badge rounded-pill bg-danger"> {source} </span> */}
-        </div>
+    <div className="my-3 ">
+      <div className="border-2">
         <Image
           unoptimized
           src={
             !imageUrl
-              ? "https://fdn.gsmarena.com/imgroot/news/21/08/xiaomi-smart-home-india-annoucnements/-476x249w4/gsmarena_00.jpg"
+              ? "https://resize.indiatvnews.com/en/centered/newbucket/1200_675/2022/05/breaking-news-1-1652835392.jpg"
               : imageUrl
           }
           className="card-img-top"
           alt="..."
-          width="20px"
-          height="20px"
+          width="400rem"
+          height="240rem"
         />
-        <div className="card-body">
-          <h5 className="card-title">{title} </h5>
-          <p className="card-text">{description}</p>
-          <p className="card-text">
-            <small className="text-muted">By {!author ? source : author}</small>
+        <div className="p-5">
+          <h5 className="font-bold">{title} </h5>
+          <div className="flex"></div>
+          <p className=" text-ellipsis overflow-hidden ...">
+            {description}...
+            <a
+              rel="noreferrer"
+              href={newsUrl}
+              target="_blank"
+              className=" text-blue-600 font-bold py-1 px-2 rounded my-8 "
+            >
+              read more
+            </a>
           </p>
-          <a
-            rel="noreferrer"
-            href={newsUrl}
-            target="_blank"
-            className="btn btn-sm btn-dark"
-          >
-            Read More
-          </a>
+
+          <p className="card-text">
+            <small className="text-muted">
+              By {!author ? "Correspondent" : author}
+            </small>
+          </p>
+          <p className="t">
+            <small>From </small>
+            <small className="text-muted text-red-600">
+              {!source ? "Agency" : source}
+            </small>
+          </p>
         </div>
       </div>
     </div>

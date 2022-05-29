@@ -34,13 +34,15 @@ const News = (props) => {
       ></h1>
 
       <div className="container">
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-3 gap-10 p-5">
           {articles.map((element) => {
             return (
               <div className="col-md-4" key={element.url}>
                 <NewsItem
                   title={element.title ? element.title : ""}
-                  description={element.description ? element.description : ""}
+                  description={
+                    element.description ? element.description.slice(0, 100) : ""
+                  }
                   imageUrl={element.image}
                   newsUrl={element.url}
                   author={element.author}
