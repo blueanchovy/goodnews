@@ -12,6 +12,7 @@ export default function Home() {
         <PhoneContainer />
         <CategoryContainer />
       </main>
+      
     </div>
   );
 }
