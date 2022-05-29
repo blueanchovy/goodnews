@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
-// import InfiniteScroll from "../node_modules/react-infinite-scroll-component/dist/index";
 import NewsItem from "./Newsitem";
-// import Spinner from "./Spinner";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const News = (props) => {
   const [articles, setArticles] = useState([]);
-  //   const [loading, setLoading] = useState(true);
-  //   const [page, setPage] = useState(1);
-  //   const [totalResults, setTotalResults] = useState(0);
+  const { ref, inView } = useInView({ threshold: 0.05 });
+  const animation = useAnimation();
   const base_url = "http://api.mediastack.com/v1/news";
   const api_key = "278d212e5cbe143d5ab68343539eeadb";
 
   const updateNews = async () => {
     const url = `${base_url}?access_key=${api_key}&countries=in&languages=en`;
     let newData = await fetch(url);
-
     let parsedData = await newData.json();
     console.log("parsedData.json:", parsedData.data);
     setArticles(parsedData.data);
@@ -26,14 +24,30 @@ const News = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  return (
-    <>
-      <h1
-        className="text-center"
-        style={{ margin: "35px 0px", marginTop: "90px" }}
-      ></h1>
+  useEffect(() => {
+    console.log("inview", inView);
+    if (inView) {
+      animation.start({
+        x: 0,
+        transition: {
+          type: "spring",
+          duration: 1,
+          bounce: 0.3,
+        },
+      });
+    }
+    if (!inView) {
+      animation.start({
+        x: "-100vw",
+      });
+    }
+  }, [inView]);
 
-      <div className="container">
+  return (
+    <div>
+      <h1 className="text-center text-6xl mt-28 mb-10 font-bold">Headlines</h1>
+
+      <div className="container" ref={ref}>
         <div className="grid grid-cols-3 gap-10 p-5">
           {articles.map((element) => {
             return (
@@ -47,14 +61,14 @@ const News = (props) => {
                   newsUrl={element.url}
                   author={element.author}
                   source={element.source}
+                  animation={animation}
                 />
               </div>
             );
           })}
         </div>
       </div>
-      {/* </InfiniteScroll> */}
-    </>
+    </div>
   );
 };
 

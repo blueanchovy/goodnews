@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "../node_modules/next/image";
+import { motion } from "framer-motion";
 
 const NewsItem = ({
   title,
@@ -8,9 +9,10 @@ const NewsItem = ({
   newsUrl,
   author,
   source,
+  animation,
 }) => {
   return (
-    <div className="my-3 ">
+    <motion.div className="my-3" animate={animation}>
       <div className="border-2">
         <Image
           unoptimized
@@ -52,7 +54,7 @@ const NewsItem = ({
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

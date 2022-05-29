@@ -12,8 +12,8 @@ export default function Home() {
         <TextContainer />
         <PhoneContainer />
         <CategoryContainer />
-        <News />
       </main>
+      <News />
     </div>
   );
 }
